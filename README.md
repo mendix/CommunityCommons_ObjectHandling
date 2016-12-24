@@ -7,32 +7,35 @@ Community Commons is a series of modules for and by the community extending the 
 ## Contributing
 For more information on contributing to this repository visit [Contributing to a GitHub repository](https://world.mendix.com/display/howto50/Contributing+to+a+GitHub+repository)!
 
-## Microflow Actions
+## Microflow Activities (Java actions exposed as microflows)
+Available microflow activities to use in your microflows
 **Object activities (Advanced)**
-- Clone
-- CopyAttributes
-- DeepClone
-- DeleteAllObjects
-- CommitInSeparateDatabaseTransaction
-- DeleteInSeparateTransaction :new:
-- DeleteWithoutEvents :new:
-- CreateListFromObject :new:
-- CommitWithoutEvents
-- EncryptMemberIfChanged
+- Clone object
+- Copy object attribute contents
+- Deep clone
+- Delete all objects
+- Force commit
+- Force delete :new:
+- Delete objects without events :new:
+- Create a list from an object :new:
+- Commit without events
+- ~~EncryptMemberIfChanged~~
 - End Transaction
-- GetCreatedByUser
-- GetGuid
-- GetLastChangedByUser
-- GetOriginalValueAsString
-- GetTypeAsString
-- MemberHasChanged
-- ObjectHasChanged
+- Get 'Created by' user object
+- Get 'Changed by' user object
+- Get object GUID 
+- Get committed value
+- Get entity type
+- Object member has changed
+- Object has changed
 - ~~ObjectIsNew~~
 - ~~RefreshClass~~
-- RefreshClassByObject
-- StartTransaction
+- Refresh class by object
+- Start Transaction
+
 
 ## Java
+Helper Java class to use in java actions
 - Xpath.jar
 
 ## Dependencies
