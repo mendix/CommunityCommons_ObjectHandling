@@ -1,4 +1,4 @@
-# CommunityCommons Object Handling
+# Community Commons Object Handling
 A collection of reusable actions concerning 'Object Handling'.
 
 ## Community Commons series (CoCo)
