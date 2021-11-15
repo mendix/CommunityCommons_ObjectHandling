@@ -7,6 +7,12 @@ public class UserActionsRegistrar
   public void registerActions(IActionRegistrator registrator)
   {
     registrator.bundleComponentLoaded();
+    registrator.registerUserAction(metamodel.actions.GetAllEntityNames.class);
+    registrator.registerUserAction(metamodel.actions.GetAssociationsOfEntity.class);
+    registrator.registerUserAction(metamodel.actions.GetAttributesOfEntity.class);
+    registrator.registerUserAction(metamodel.actions.GetMicroflowName.class);
+    registrator.registerUserAction(metamodel.actions.GetMicroflowNames.class);
+    registrator.registerUserAction(metamodel.actions.GetModuleName.class);
     registrator.registerUserAction(objecthandling.actions.clone.class);
     registrator.registerUserAction(objecthandling.actions.commitInSeparateDatabaseTransaction.class);
     registrator.registerUserAction(objecthandling.actions.copyAttributes.class);
@@ -19,11 +25,13 @@ public class UserActionsRegistrar
     registrator.registerUserAction(objecthandling.actions.getCreatedByUser.class);
     registrator.registerUserAction(objecthandling.actions.getGUID.class);
     registrator.registerUserAction(objecthandling.actions.getLastChangedByUser.class);
+    registrator.registerUserAction(objecthandling.actions.getMemberValueByMemberName.class);
     registrator.registerUserAction(objecthandling.actions.getOriginalValueAsString.class);
     registrator.registerUserAction(objecthandling.actions.getTypeAsString.class);
     registrator.registerUserAction(objecthandling.actions.memberHasChanged.class);
     registrator.registerUserAction(objecthandling.actions.objectHasChanged.class);
     registrator.registerUserAction(objecthandling.actions.refreshClassByObject.class);
+    registrator.registerUserAction(objecthandling.actions.setMemberValueByMemberName.class);
     registrator.registerUserAction(objecthandling.actions.StartTransaction.class);
     registrator.registerUserAction(system.actions.VerifyPassword.class);
     registrator.registerUserAction(unittesting.actions.FindAllUnitTests.class);
