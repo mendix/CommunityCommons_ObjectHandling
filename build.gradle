@@ -8,7 +8,7 @@ import com.github.jk1.license.render.*
 
 plugins {
     id 'java'
-    id 'com.mendix.gradle.publish-module-plugin' version '1.6'
+    id 'com.mendix.gradle.publish-module-plugin' version '1.10'
     id 'net.researchgate.release' version '2.8.1'
     id 'com.github.jk1.dependency-license-report' version '2.0'
 }
