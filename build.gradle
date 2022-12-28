@@ -1,0 +1,112 @@
+
+// This gradle build depends on Mendix internal resources, the lastest commit
+// which did not is 6e1527a5e31347c6914bc34deab31ef4ab46953b. You may restore
+// the gradle scripts to that commit if you which to use them at your own risk.
+// We don't guarantee that those will keep working in the future.
+
+import com.github.jk1.license.render.*
+
+plugins {
+    id 'java'
+    id 'com.mendix.gradle.publish-module-plugin' version '1.10'
+    id 'net.researchgate.release' version '2.8.1'
+    id 'com.github.jk1.dependency-license-report' version '2.0'
+}
+
+sourceCompatibility = '11'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+project.ext {
+    mendixPublicApiVersion = '8.12.5'
+}
+
+mxMarketplace {
+    appNumber = 37114
+    appName = 'ObjectHandling'
+    moduleName = 'ObjectHandling'
+    moduleLicense = 'Apache V2'
+    appDirectory = "src/ObjectHandling"
+    versionPathPrefix = "_Docs/version " // the path prefix within the module to the version folder
+}
+
+def userLibDir = "$projectDir/src/ObjectHandling/userlib"
+
+repositories {
+    maven {
+        url 'https://nexus.rnd.mendix.com/repository/repo1-proxy/'
+    }
+    maven {
+        url 'https://nexus.rnd.mendix.com/repository/maven-hosted/'
+    }
+}
+
+dependencies {
+    testImplementation(
+            [group: 'com.mendix', name: 'public-api', version: "$mendixPublicApiVersion"],
+            [group: 'junit', name: 'junit', version: '4.13.1'],
+            [group: 'commons-io', name: 'commons-io', version: '2.11.0'],
+            [group: 'org.apache.httpcomponents.core5', name: 'httpcore5', version: '5.0.3'],
+            [group: 'org.apache.httpcomponents.client5', name: 'httpclient5', version: '5.0.3']
+    )
+
+    compileOnly([group: 'com.mendix', name: 'public-api', version: "$mendixPublicApiVersion"])
+
+    implementation(
+            [group: 'org.apache.commons', name: 'commons-lang3', version: '3.7']
+    )
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/ObjectHandling/javasource'
+            exclude 'unittesting/**'
+            exclude 'system/UserActionsRegistrar.java'
+        }
+    }
+    test {
+        java {
+            srcDirs = ["src/test", "src/ObjectHandling/javasource"]
+        }
+    }
+}
+
+test {
+    exclude 'unittesting/**'
+}
+
+task copyAllToUserlib(type: Copy) {
+    from configurations.testCompileClasspath
+    into userLibDir
+    eachFile { fileCopyDetails -> new File(destinationDir, "${fileCopyDetails.name}.${project.name}.RequiredLib").write '' }
+}
+
+task copyRuntimeToUserlib(type: Copy) {
+    from configurations.runtimeClasspath
+    into userLibDir
+    eachFile { fileCopyDetails -> new File(destinationDir, "${fileCopyDetails.name}.${project.name}.RequiredLib").write '' }
+}
+
+clean {
+    delete "$userLibDir"
+}
+
+release {
+    tagTemplate = '$name-$version'
+}
+
+task afterReleaseBuildTask {
+    dependsOn 'clean'
+    dependsOn 'copyRuntimeToUserlib'
+    dependsOn 'publishModuleToMarketplace'
+
+    tasks.findByName('copyRuntimeToUserlib').mustRunAfter 'clean'
+    tasks.findByName('publishModuleToMarketplace').mustRunAfter 'copyRuntimeToUserlib'
+}
+
+afterReleaseBuild.dependsOn afterReleaseBuildTask
+
+licenseReport {
+    allowedLicensesFile = new File("$projectDir/allowed-licenses.json")
+    renderers = [new TextReportRenderer()]
+}

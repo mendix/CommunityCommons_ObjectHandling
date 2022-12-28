@@ -4,6 +4,9 @@ deployment
 *.launch
 .classpath
 .project
+.gradle/
+bin/
+build/
 *.mpr.lock
 .mendix-cache
 proxies
