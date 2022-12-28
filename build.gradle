@@ -23,10 +23,10 @@ project.ext {
 mxMarketplace {
     appNumber = 37114
     appName = 'ObjectHandling'
-    moduleName = 'CommunityCommons_ObjectHandling'
+    moduleName = 'ObjectHandling'
     moduleLicense = 'Apache V2'
     appDirectory = "src/ObjectHandling"
-    versionPathPrefix = "_Version " // the path prefix within the module to the version folder
+    versionPathPrefix = "_Docs/version " // the path prefix within the module to the version folder
 }
 
 def userLibDir = "$projectDir/src/ObjectHandling/userlib"
