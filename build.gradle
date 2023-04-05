@@ -17,7 +17,7 @@ sourceCompatibility = '11'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 project.ext {
-    mendixPublicApiVersion = '8.12.5'
+    mendixPublicApiVersion = '9.18.0'
 }
 
 mxMarketplace {
@@ -52,8 +52,13 @@ dependencies {
     compileOnly([group: 'com.mendix', name: 'public-api', version: "$mendixPublicApiVersion"])
 
     implementation(
-            [group: 'org.apache.commons', name: 'commons-lang3', version: '3.7']
+            [group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'],
+            [group: 'org.apache.commons', name: 'commons-text', version: '1.10.0']
     )
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << "-Xlint:deprecation"
 }
 
 sourceSets {

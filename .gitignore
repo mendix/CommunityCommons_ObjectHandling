@@ -26,8 +26,11 @@ src/ObjectHandling/*.mpr.right*
 src/ObjectHandling/.mendix-cache
 src/ObjectHandling/.settings
 src/ObjectHandling/.svn
+src/ObjectHandling/ObjectHandling_*.mpk
 src/ObjectHandling/deployment
 src/ObjectHandling/javasource/system/UserActionsRegistrar.java
 src/ObjectHandling/javasource/system/actions/VerifyPassword.java
 src/ObjectHandling/modeler-merge-marker
+src/ObjectHandling/project-settings.user.json
+src/ObjectHandling/theme-cache
 src/ObjectHandling/userlib
