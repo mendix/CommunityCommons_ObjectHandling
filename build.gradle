@@ -76,12 +76,18 @@ test {
 }
 
 task copyAllToUserlib(type: Copy) {
+    group "Build"
+    description "Copies all dependencies to the userlib directory."
+
     from configurations.testCompileClasspath
     into userLibDir
     eachFile { fileCopyDetails -> new File(destinationDir, "${fileCopyDetails.name}.${project.name}.RequiredLib").write '' }
 }
 
 task copyRuntimeToUserlib(type: Copy) {
+    group "Build"
+    description "Copies the runtime dependencies to the userlib directory."
+
     from configurations.runtimeClasspath
     into userLibDir
     eachFile { fileCopyDetails -> new File(destinationDir, "${fileCopyDetails.name}.${project.name}.RequiredLib").write '' }
@@ -91,17 +97,19 @@ clean {
     delete "$userLibDir"
 }
 
+tasks.named('exportModule') {
+    dependsOn 'copyRuntimeToUserlib'
+}
+
 release {
     tagTemplate = '$name-$version'
 }
 
 task afterReleaseBuildTask {
     dependsOn 'clean'
-    dependsOn 'copyRuntimeToUserlib'
     dependsOn 'publishModuleToMarketplace'
 
-    tasks.findByName('copyRuntimeToUserlib').mustRunAfter 'clean'
-    tasks.findByName('publishModuleToMarketplace').mustRunAfter 'copyRuntimeToUserlib'
+    tasks.findByName('publishModuleToMarketplace').mustRunAfter 'clean'
 }
 
 afterReleaseBuild.dependsOn afterReleaseBuildTask
