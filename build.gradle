@@ -102,6 +102,14 @@ clean {
     delete "$userLibDir"
 }
 
+tasks.named('mxBuild') {
+    dependsOn copyAllToUserlib
+}
+
+tasks.named('compileJava') {
+    dependsOn mxBuild
+}
+
 tasks.named('exportModule') {
     dependsOn 'copyRuntimeToUserlib'
 }
