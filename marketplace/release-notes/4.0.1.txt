@@ -1,3 +1,5 @@
 We added startsWith, endsWith, gte, lt and lte to XPath.java.
 
 We fixed gt in XPath.java. This function was using >= instead of the correct >.
+
+Include a migration file for the Java dependencies.
