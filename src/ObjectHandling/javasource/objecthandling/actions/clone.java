@@ -11,30 +11,35 @@ package objecthandling.actions;
 
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
-import com.mendix.webui.CustomJavaAction;
 import objecthandling.ORM;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
 /**
- * Clones objects
- * 
- * - Source: the original object to copy
- * - Target: the object to copy it into (should be of the same type, or a specialization)
- * - includeAssociations: whether to clone associations. 
- * 
+ * Clones objects
+ * 
+ * - Source: the original object to copy
+ * - Target: the object to copy it into (should be of the same type, or a specialization)
+ * - includeAssociations: whether to clone associations. 
+ * 
  * If associated objects need to be cloned as well, use deepClone, this function only copies the references, not the reffered objects. Target is not committed automatically.
  */
-public class clone extends CustomJavaAction<java.lang.Boolean>
+public class clone extends UserAction<java.lang.Boolean>
 {
-	private IMendixObject source;
-	private IMendixObject target;
-	private java.lang.Boolean withAssociations;
+	private final IMendixObject source;
+	private final IMendixObject target;
+	private final java.lang.Boolean withAssociations;
 
-	public clone(IContext context, IMendixObject source, IMendixObject target, java.lang.Boolean withAssociations)
+	public clone(
+		IContext context,
+		IMendixObject _source,
+		IMendixObject _target,
+		java.lang.Boolean _withAssociations
+	)
 	{
 		super(context);
-		this.source = source;
-		this.target = target;
-		this.withAssociations = withAssociations;
+		this.source = _source;
+		this.target = _target;
+		this.withAssociations = _withAssociations;
 	}
 
 	@java.lang.Override

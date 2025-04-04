@@ -4,6 +4,7 @@
 .classpath
 .mendix-cache
 .project
+.vscode
 
 /.gradle/
 /.mendix-cache
@@ -34,3 +35,4 @@ src/ObjectHandling/modeler-merge-marker
 src/ObjectHandling/project-settings.user.json
 src/ObjectHandling/theme-cache
 src/ObjectHandling/userlib
+src/ObjectHandling/vendorlib

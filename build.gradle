@@ -13,11 +13,11 @@ plugins {
     id 'com.github.jk1.dependency-license-report' version '2.0'
 }
 
-sourceCompatibility = '11'
+sourceCompatibility = '21'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 project.ext {
-    mendixPublicApiVersion = '9.18.0'
+    mendixPublicApiVersion = '10.21.0'
 }
 
 def mprDir = "$projectDir/src/ObjectHandling"
@@ -30,7 +30,7 @@ mxMarketplace {
     appDirectory = "src/ObjectHandling"
     versionPathPrefix = "_Docs/version " // the path prefix within the module to the version folder
     createMigrationFile = true
-    includeFiles = ["$mprDir/License.txt", "$mprDir/SiemensMendixObjectHandling__4.0.3__READMEOSS.html"]
+    includeFiles = ["$mprDir/License.txt", "$mprDir/SiemensMendixObjectHandling__5.0.0__READMEOSS.html"]
 }
 
 def userLibDir = "$mprDir/userlib"
