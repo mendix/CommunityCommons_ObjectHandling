@@ -29,7 +29,7 @@ mxMarketplace {
     moduleLicense = 'Apache V2'
     appDirectory = "src/ObjectHandling"
     versionPathPrefix = "_Docs/version " // the path prefix within the module to the version folder
-    includeFiles = ["$mprDir/License.txt", "$mprDir/SiemensMendixObjectHandling__5.0.0__READMEOSS.html"]
+    includeFiles = ["$mprDir/License.txt", "$mprDir/SiemensMendixObjectHandling__5.1.0__READMEOSS.html"]
     syncJavaDependenciesBeforeBuild = true
 }
 
