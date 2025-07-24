@@ -30,7 +30,7 @@ mxMarketplace {
     appDirectory = "src/ObjectHandling"
     versionPathPrefix = "_Docs/version " // the path prefix within the module to the version folder
     createMigrationFile = true
-    includeFiles = ["$mprDir/License.txt", "$mprDir/SiemensMendixObjectHandling__4.0.3__READMEOSS.html"]
+    includeFiles = ["$mprDir/License.txt", "$mprDir/SiemensMendixObjectHandling__4.1.0__READMEOSS.html"]
 }
 
 def userLibDir = "$mprDir/userlib"
@@ -62,7 +62,7 @@ dependencies {
     compileOnly([group: 'com.mendix', name: 'public-api', version: "$mendixPublicApiVersion"])
 
     implementation(
-            [group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'],
+            [group: 'org.apache.commons', name: 'commons-lang3', version: '3.18.0'],
             [group: 'org.apache.commons', name: 'commons-text', version: '1.10.0']
     )
 }
