@@ -17,7 +17,7 @@ sourceCompatibility = '21'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 project.ext {
-    mendixPublicApiVersion = '10.21.0'
+    mendixPublicApiVersion = '10.24.0'
 }
 
 def mprDir = "$projectDir/src/ObjectHandling"
@@ -29,7 +29,7 @@ mxMarketplace {
     moduleLicense = 'Apache V2'
     appDirectory = "src/ObjectHandling"
     versionPathPrefix = "_Docs/version " // the path prefix within the module to the version folder
-    includeFiles = ["$mprDir/License.txt", "$mprDir/SiemensMendixObjectHandling__5.1.0__READMEOSS.html"]
+    includeFiles = ["$mprDir/License.txt", "$mprDir/SiemensMendixObjectHandling__5.2.0__READMEOSS.html"]
     syncJavaDependenciesBeforeBuild = true
 }
 
